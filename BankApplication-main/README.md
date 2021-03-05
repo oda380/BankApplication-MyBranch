@@ -2,16 +2,9 @@
 
 SDA Final project
 
-Team members: 
-- Leonardo Lorusso
-- Mikael Gael
-- Kitaek Lim
+Original Team members: 
+- Leonardo Lorusso 
+- Mikael Gael 
+- Kitaek Lim 
 
-Project includes:
-
-- Spring Boot + Java8
-- h2database
-- Spring-Data-JPA
-- Thymeleaf
-- Lombok
-- CSS Bootstrap5
+This repository is based on Kitaek Lim's branch.
