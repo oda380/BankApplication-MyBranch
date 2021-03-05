@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navHome :: navHome"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+
+
+<h2>Fill the field correctly and submit to make a transfer</h2>
+
+
+<h1>Transfer form : </h1>
+<form action="#" th:action="@{/transfer}" th:object="${transaction}" method="post">
+    <p>Your account Number: <input type="text" th:field="*{senderAccount}" /></p>
+    <p>Your name: <input type="text" th:field="*{senderName}" /></p>
+    <p>Amount: <input type="number" th:field="*{amount}" /></p>
+    <p>receiver account: <input type="text" th:field="*{recipientAccount}" /></p>
+    <p>Receiver name: <input type="text" th:field="*{recipientName}" /></p>
+
+
+    <p><input type="submit" value="validate your transfer" /> <input type="reset" value="Reset data" /></p>
+</form>
+
+
+
+
+<p>
+    <a th:href="@{/transaction}">go back to transaction page</a>
+</p>
+
+<p>
+    <a th:href="@{/transactions}">Show All transactions</a>
+</p>
+
+<p>
+    <a th:href="@{/transactions/bysender}">Show transactions By sender 6666 </a>
+</p>
+
+<p>
+    <a th:href="@{/transactions/byrecipient}">Show transactions By recipient 12345 </a>
+</p>
+
+</body>
+</html>

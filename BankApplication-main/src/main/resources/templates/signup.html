@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navHome :: navHome"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5" th:style="'border-color: rgba(224, 228, 228, 0.801);
+                border-style: solid;
+                border-radius: 10px;
+                border-width: 1px;
+                padding-top:10px;
+                padding-bottom:10px'">
+
+
+        <form th:action="@{/signup}" th:object="${customer}"  method="POST">
+            <h4>OPEN NEW ACCOUNT</h4><hr>
+            <div class="form-group">
+                <label for="userName">User Id</label>
+                <input type="text" th:field="*{userName}" name="userName" class="form-control" id="userName" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" th:field="*{password}" name="password" class="form-control" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="firstName">First name</label>
+                <input type="text" th:field="*{firstName}" name="firstName" class="form-control" id="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input type="text" th:field="*{lastName}"name="lastName" class="form-control" id="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="mail">Email</label>
+                <input type="email" th:field="*{email}"name="mail" class="form-control" id="mail" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <hr>
+        <div class="text-center">
+            Do you already have an account? <a th:href="@{/login}">Login here</a>
+        </div>
+            <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
+    </div>
+    </div>
+</body>

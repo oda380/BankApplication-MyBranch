@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navLogged :: navTeller"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+<br><br>
+<div align="center" th:style="'margin: auto;rgba(224, 228, 228, 0.801);'">
+    <div class="card" th:style="'background-color:transparent;width:800px;'">
+        <div class="card-body">
+            <div class="card-title">
+                <div class="panel-heading">
+                    <span th:utext="${userName}"></span>
+                </div>
+            </div>
+            <p class="admin-message-text text-center" th:utext="${userMessage}"></p>
+      </div>
+    </div>
+    <div class="card" th:style="'background-color:transparent;width:800px;'">
+            <table class="table table-secondary table-bordered mt-5 align-middle">
+                <tr>
+                    <th align="center">Total Requests (<span th:text="${totalRequests}"/>)</th>
+                    <th> <a th:href="@{ticket-console/opened}" class="btn btn-primary">Opened (<span th:text="${totalOpen}"/>)</a></th>
+                <td><a th:href="@{ticket-console/pending}" class="btn btn-primary">Pending (<span th:text="${totalPending}"/>)</a></td>
+                <td><a th:href="@{ticket-console/progress}" class="btn btn-primary">In progress (<span th:text="${totalWIP}"/>)</a></td>
+                <td><a th:href="@{ticket-console/completed}" class="btn btn-primary">Completed (<span th:text="${totalCompleted}"/>)</a></td>
+                </tr>
+                <tr>
+                    <th align="center">Account Requests (<span th:text="${totalAccountRequests}"/>)</th>
+                    <th> <a th:href="@{account-console/opened}" class="btn btn-primary">Opened (<span th:text="${totalAccountOpen}"/>)</a></th>
+                    <td><a th:href="@{account-console/pending}" class="btn btn-primary">Pending (<span th:text="${totalAccountPending}"/>)</a></td>
+                    <td><a th:href="@{account-console/progress}" class="btn btn-primary">In progress (<span th:text="${totalAccountWIP}"/>)</a></td>
+                    <td><a th:href="@{account-console/completed}" class="btn btn-primary">Completed (<span th:text="${totalAccountCompleted}"/>)</a></td>
+                </tr>
+                <tr>
+                    <th align="center">Loan Requests (<span th:text="${totalLoanRequests}"/>)</th>
+                    <th> <a th:href="@{loan-console/opened}" class="btn btn-primary">Opened (<span th:text="${totalLoanOpen}"/>)</a></th>
+                    <td><a th:href="@{loan-console/pending}" class="btn btn-primary">Pending (<span th:text="${totalLoanWIP}"/>)</a></td>
+                    <td><a th:href="@{loan-console/progress}" class="btn btn-primary">In progress (<span th:text="${totalLoanPending}"/>)</a></td>
+                    <td><a th:href="@{loan-console/completed}" class="btn btn-primary">Completed (<span th:text="${totalLoanCompleted}"/>)</a></td>
+                </tr>
+            </table>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:ch="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navHome :: navHome"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+<br><h3 align="center">Transaction details</h3><br>
+<div align="center" th:style="'margin: auto;
+  width: 60%;
+  border: 3px solid rgba(224, 228, 228, 0.801);
+  padding: 10px;rgba(224, 228, 228, 0.801);'">
+
+    <table class="table table-secondary table-bordered mt-5 align-middle">
+        <a align="center" th:text = "${transferMessage}"/>
+        <head align="center" >
+            <tr>
+                <th rowspan="2">balance</th>
+                <th rowspan="2">amount</th>
+                <th rowspan="2">date</th>
+                <th rowspan="2">title</th>
+                <th colspan="2" style="vertical-align : middle;text-align:center;">recipient</th>
+                <th colspan="2" style="vertical-align : middle;text-align:center;">sender</th>
+            </tr>
+            <tr>
+                <th>account</th>
+                <th>name</th>
+                <th>account</th>
+                <th>name</th>
+            </tr>
+        </head>
+
+        <tbody >
+        <tr th:each="transaction :  ${transactions} " >
+            <!--<td>
+                <a th:if="${balanceType}=='sent'"> <p th:text ="${transaction.senderBalance}"/></a>
+                <a th:if="${balanceType}=='received'"> <p th:text ="${transaction.recipientBalance}"/></a>
+                <a th:if="${balanceType}=='all'"> <p th:text="'calculating ... '"/></a>
+            </td>-->
+            <td>
+                <a th:if="${transaction.recipientAccount} == ${accountNumber}"> <p th:text="${transaction.recipientBalance}" /></a>
+                <a th:if="${transaction.senderAccount} == ${accountNumber}"> <p th:text="${transaction.senderBalance}" /></a>
+            </td>
+            <td>
+                <a th:if="${transaction.recipientAccount} == ${accountNumber}"> <p th:text="'+'${transaction.amount}" /></a>
+                <a th:if="${transaction.senderAccount} == ${accountNumber}"> <p th:text="-${transaction.amount}" /></a>
+                <!--<p th:text="${transaction.amount}" />-->
+            </td>
+            <td> <p th:text="${transaction.createdAt}" /></td>
+            <td> <p th:text="${transaction.reason}" /></td>
+            <td> <p th:text="${transaction.recipientAccount}" /></td>
+            <td> <p th:text="${transaction.recipientName}" /> </td>
+            <td> <p th:text="${transaction.senderAccount}" /></td>
+            <td> <p th:text="${transaction.senderName}" /> </td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+
+    <a th:href="@{/customer/transactions/all}" class="btn btn-primary" >Show All transactions (loan included)</a>
+
+    <a th:href="@{/customer/transactions/received}" class="btn btn-primary">Show All received transfers </a>
+
+    <a th:href="@{/customer/transactions/sent}" class="btn btn-primary">show all sent transfers</a>
+
+
+
+</div>
+<br>
+<br>
+<a th:href="@{/customer/customerDashboard}" class="btn btn-primary">return your account dashboard</a>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navLogged :: navTeller"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+<br><h3 align="center">Account request status</h3><br>
+<div align="center" th:style="'margin: auto;
+  width: 60%;
+  border: 3px solid rgba(224, 228, 228, 0.801);
+  padding: 10px;rgba(224, 228, 228, 0.801);'">
+
+    <table class="table table-secondary table-bordered mt-5 align-middle" >
+    <tr>
+        <th align="center">Account Requests (<span th:text="${totalAccountRequests}"/>)</th>
+        <th> <a th:href="@{account-console/opened}" class="btn btn-primary">Opened (<span th:text="${totalAccountOpen}"/>)</a></th>
+        <td><a th:href="@{account-console/pending}" class="btn btn-primary">Pending (<span th:text="${totalAccountPending}"/>)</a></td>
+        <td><a th:href="@{account-console/progress}" class="btn btn-primary">In progress (<span th:text="${totalAccountWIP}"/>)</a></td>
+        <td><a th:href="@{account-console/completed}" class="btn btn-primary">Completed (<span th:text="${totalAccountCompleted}"/>)</a></td>
+    </tr>
+    </table>
+
+    <table class="table table-secondary table-bordered mt-5 align-middle" >
+
+        <thead>
+            <tr>
+                <th>Submit date</th>
+                <th>Last Update</th>
+                <th>Requester</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <th:block th:each="assessment: ${assessments}">
+        <tr>
+            <td valign="bottom"> <p th:text="${assessment.createdAt}"/> </td>
+            <td valign="center"> <p th:text="${assessment.modifiedAt}"/> </td>
+            <td valign="center"> <p><span th:text="${assessment.firstName}"/> <span th:text="${assessment.lastName}"/></p> </td>
+            <td valign="bottom"> <p th:text="${assessment.status}"/> </td>
+            <td>
+                <a th:href="@{/admin/account-console/details/} + ${assessment.id}" class="btn btn-primary">Details</a>
+                <a th:href="@{/admin/account-console/start/} + ${assessment.id}" class="btn btn-primary">Start</a>
+                <a th:href="@{/admin/account-console/take-decision/} + ${assessment.id}" class="btn btn-primary">Take decision</a>
+            </td>
+        </tr>
+
+        </th:block>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

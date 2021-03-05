@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navLogged :: navTeller"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+<br><h3 align="center">Account requests waiting for approvals</h3><br>
+<div align="center" th:style="'margin: auto;
+  width: 60%;
+  border: 3px solid rgba(224, 228, 228, 0.801);
+  padding: 10px;rgba(224, 228, 228, 0.801);'">
+
+    <table class="table table-secondary table-bordered mt-5" style="font-size: 12px;vertical-align:bottom;text-align:left" >
+
+        <thead>
+        <tr>
+            <th>Submit date</th>
+            <th>Last Update</th>
+            <th>Requester</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <th:block th:each="assessment: ${assessments}">
+            <tr>
+                <td> <p th:text="${assessment.createdAt}"/> </td>
+                <td > <p th:text="${assessment.modifiedAt}"/> </td>
+                <td> <p><span th:text="${assessment.firstName}"/> <span th:text="${assessment.lastName}"/></p> </td>
+                <td> <p th:text="${assessment.status}"/> </td>
+                <td>
+                    <a th:href="@{/admin/account-console/details/} + ${assessment.id}" class="btn btn-primary">Details</a>
+                    <a th:href="@{/admin/account-console/take-decision/} + ${assessment.id}" class="btn btn-primary">Take decision</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navHome :: navHome"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+<div class="row justify-content-center mt-5">
+<div class="col-md-5" th:style="'border-color: rgba(224, 228, 228, 0.801);
+                border-style: solid;
+                border-radius: 10px;
+                border-width: 1px;
+                padding-top:10px;
+                padding-bottom:10px'">
+    <h1>SDA Final project</h1>
+    <hr>
+    <h3>Team members:</h3>
+    <ul>
+        <li>Leonardo Lorusso</li>
+        <li>Kitaek Lim</li>
+        <li>Mikael Gael</li>
+    </ul>
+    <hr>
+        <h3>Project includes:</h3>
+    <ul>
+        <li>Spring Boot + Java8</li>
+        <li>h2database</li>
+        <li>Spring-Data-JPA</li>
+        <li>Spring-Security</li>
+        <li>Thymeleaf</li>
+        <li>Lombok</li>
+        <li>CSS Bootstrap5</li>
+    </ul>
+    <hr>
+    <h3>Possible code sources:</h3>
+    <ul>
+        <li><a href="https://github.com/LeoIta/BankApplication" target="_blank">link1</a></li>
+        <li><a href="https://github.com/oda380/BankApplication" target="_blank">link2</a></li>
+        <li><a href="https://github.com/cheuwami/BankApplication" target="_blank">link3</a></li>
+    </ul>
+
+</div></div>
+</body>
+</html>

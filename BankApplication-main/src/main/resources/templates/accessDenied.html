@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navLogged :: navClient"/>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ACCESS DENIED</title>
+</head>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+<h2>Sorry, you do not have permission to view this page.</h2>
+Click <a th:href="@{/customer/customerDashboard}">here</a>
+to go back to the Customer dashboard.
+</body>
+</html>

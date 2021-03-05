@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navLogged :: navClient"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5" th:style="'border-color: rgba(224, 228, 228, 0.801);
+                border-style: solid;
+                border-radius: 10px;
+                border-width: 1px;
+                padding-top:10px;
+                padding-bottom:10px'">
+
+        <form method="POST" th:action="@{/customer/openLoan}" th:object="${assessment}">
+            <h4>REQUEST A LOAN</h4><hr>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" class="form-control" id="firstName"
+                       th:value=${assessment.firstName} required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" class="form-control" id="lastName"
+                       th:value=${assessment.lastName} required>
+            </div>
+
+            <div class="form-group">
+                <label for="mail">Email</label>
+                <input type="email" th:field="*{email}"name="mail" class="form-control" id="mail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="annualIncome">Annual Income</label>
+                <input type="number" name="annualIncome" class="form-control" id="annualIncome"
+                       th:value=${assessment.annualIncome} min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" name="country" class="form-control" id="country"
+                       th:value=${assessment.country} required>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" name="city" class="form-control" id="city"
+                       th:value=${assessment.city}  required>
+            </div>
+            <div class="form-group">
+                <label for="postcode">Postal Code</label>
+                <input type="tel" name="postcode" class="form-control" id="postcode"
+                       th:value=${assessment.postcode} required>
+            </div>
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" name="street" class="form-control" id="street"
+                       th:value=${assessment.street} required>
+            </div>
+
+            <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" name="startDate" class="form-control" id="startDate" min="2021-03-01" required>
+            </div>
+            <div class="form-group">
+                <label for="dueDate">Due Date</label>
+                <input type="date" name="dueDate" class="form-control" id="dueDate" min="2021-04-01" required>
+            </div>
+            <div class="form-group">
+                <label for="payDay">Pay day</label>
+                <input type="number" name="payDay" class="form-control" id="payDay" min="1" max="28" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason</label>
+                <input type="text" name="reason" class="form-control" id="reason" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit your request</button>
+
+        </form>
+    </div>
+</div>
+</body>

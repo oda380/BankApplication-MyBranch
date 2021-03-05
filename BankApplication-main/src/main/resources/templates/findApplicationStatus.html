@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5" th:style="'border-color: rgba(224, 228, 228, 0.801);
+                border-style: solid;
+                border-radius: 10px;
+                border-width: 1px;
+                padding-top:10px;
+                padding-bottom:10px'">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-7 text-center">
+                <form th:action="@{/checkStatusRequest}" th:object="${reference}"  method="POST">
+                    <h4>REQUEST STATUS</h4><hr>
+                    <div class="form-group">
+                        <label for="reference">Insert tracking number</label>
+                        <input type="search" name="reference" class="form-control" id="reference">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Check the status</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

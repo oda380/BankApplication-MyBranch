@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navHome :: navHome"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+
+<div align="center" th:style="'margin: auto;rgba(224, 228, 228, 0.801);'">
+    <div class="card" th:style="'padding=20px;background-color:transparent;width:400px;'">
+        <div class="card-body">
+            <h1>Transactions  pages </h1>
+            <a th:href="@{/customer/maketransfer}">make a transfer</a>
+            <br><br>
+            <a th:href="@{/customer/transactions}">Show All transactions</a>
+            <br><br>
+            <a th:href="@{/customer/transactions/bysender}">Show transactions By sender  </a>
+            <br><br>
+            <a th:href="@{/customer/transactions/byrecipient}">Show transactions By recipient  </a>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

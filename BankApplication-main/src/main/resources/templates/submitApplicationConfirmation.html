@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5" th:style="'border-color: rgba(224, 228, 228, 0.801);
+                border-style: solid;
+                border-radius: 10px;
+                border-width: 1px;
+                padding-top:10px;
+                padding-bottom:10px'">
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-7 text-center">
+                    <h1><p th:text="${confirmation}" /></h1>
+                    <a role="button" class="btn btn-primary btn-lg" th:href="@{/checkStatusRequest}">
+                        You can follow your request status here</a>
+                    <a class="btn btn-primary" th:href="@{/customer/customerDashboard}">Go back to dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

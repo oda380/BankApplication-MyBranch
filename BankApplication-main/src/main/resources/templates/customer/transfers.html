@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navHome :: navHome"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-3" th:style="'border-color: rgba(224, 228, 228, 0.801);
+                border-style: solid;
+                border-radius: 10px;
+                border-width: 1px;
+                padding-top:10px;
+                padding-bottom:10px'">
+        <form action="#" th:action="@{/customer/maketransfer}" th:object="${transaction}" method="post">
+            <h4>MAKE TRANSFER</h4>
+            <br>
+            <div class="card-text">
+                <h5><b>Current balance: </b> <a th:text="${acc.balance}" /></h5>
+                <br></div>
+            <h10><a> All fields with <a style="color:red"> (*) </a> are mandatory</a></h10>
+            <div class="form-group">
+                <label for="sender_account">Sender account</label>
+                <input type="text" name="sender_account" class="form-control" id="sender_account"
+                       th:value= "${acc.accountNumber}" readonly="readonly" required>
+            </div>
+            <div class="form-group">
+
+                <label for="sender_name">Sender name</label>
+                <input type="text" name="sender_name" class="form-control" id="sender_name" th:value="${cst.firstName} +' '+ ${cst.lastName}" readonly="readonly" required>
+            </div>
+<hr>
+            <div class="form-group">
+                <label for="recipient_account">Recipient account <a style="color:red"> * </a></label>
+                <input type="text" th:field="*{recipientAccount}" name="recipient_account" class="form-control" id="recipient_account" required>
+            </div>
+            <div class="form-group">
+                <label for="recipient_name">Recipient name <a style="color:red"> * </a></label>
+                <input type="text" th:field="*{recipientName}"  name="recipient_name" class="form-control" id="recipient_name" required>
+            </div>
+    <hr>
+            <div class="form-group">
+                <label for="amount">Amount <a style="color:red"> * </a></label>
+                <input type="number" th:field="*{amount}" name="amount" class="form-control" id="amount" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Title <a style="color:red"> * </a> </label>
+                <input type="text" th:field="*{reason}" name="title" class="form-control" id="title" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Confirm transfer</button>
+            <a type="button" th:href="@{/customer/customerDashboard}" class="btn btn-primary">Cancel</a>
+        </form>
+        <hr>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<div th:replace="fragments/navLogged :: navClient"/>
+<body th:style="'background-image: url(' + @{/images/background.png} + ');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height=100%'">
+<br><br>
+<div align="center" th:style="'margin: auto;rgba(224, 228, 228, 0.801);'">
+    <div class="card" th:style="'background-color:transparent;width:800px;'">
+        <div class="card-body">
+            <div class="card-title">
+                <div class="panel-heading">
+                    <span th:utext="${userName}"></span>
+                </div>
+            </div>
+            <p class="admin-message-text text-center" th:utext="${userMessage}"></p>
+        </div>
+    </div>
+</div>
+<br>
+<div align="center" th:style="'margin: auto;rgba(224, 228, 228, 0.801);'">
+<!--        <div class="card" th:style="'padding=20px;background-color:transparent;width:400px;'">
+            <div class="card-body">
+                <h5 class="card-title">Your Account</h5>
+                <p class="card-text"><b>Account number:</b></p>
+                <p class="card-text"><p th:text="${account.accountNumber}" /></p>
+                <p class="card-text"><b>Balance:</b></p>
+                <p class="card-text"><p th:text="${account.balance}" /></p>
+                <a th:href="@{'/customer/transactions'}" class="btn btn-primary">Show details</a>
+                <a th:href="@{'/customer/maketransfer'}" class="btn btn-primary">Make transaction</a>
+            </div></div>
+    <br><br>
+        <div class="card" th:style="'padding=20px;background-color: transparent;width:400px;'">
+            <div class="card-body">
+                    <h5 class="card-title">Loan</h5>
+                    <p class="card-text"><b>Loan amount: </b> <p th:text="${loan.amount}" /></p>
+                    <p class="card-text"><b>End date: </b><p th:text="${loan.dueDate}" /></p>
+                    <p class="card-text"><b>Monthly payment: </b>500</p>
+                    <p class="card-text"><b>Pay day: </b><p th:text="${loan.payDay}" /></p>
+
+                <a th:href="@{/customer/loandetails}" class="btn btn-primary">Show details</a>
+            </div>
+        </div>-->
+</div>
+
+
+</body>
+</html>
